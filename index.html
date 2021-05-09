@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=open+sans:g00,700"
+     rel="stylesheet">      
+</head>
+    
+    
+<body>
+    
+   
+    
+    <div class="container">
+        
+        <div class="calculator">
+            
+            <div class="result">
+                
+                <div id="history">
+                    <p id="history-val"> </p>
+                </div>
+                
+                <div id="output">
+                    <p id="output-val" class="try"></p>
+                </div>
+                
+            </div>
+            
+            <div id="keyboard" class="keyboard">
+                
+                <button id="clear" class="operator">C</button>
+                <button id="backspace" class="operator">&larr; </button>
+                <button id="%" class="operator">%</button>
+                <button id="/" class="operator">&divide;</button>
+                
+                <button id="7" class="number">7</button>
+                <button id="8" class="number">8</button>
+                <button id="9" class="number">9</button>
+                <button id="*" class="operator">&times;</button>
+                
+                <button id="4" class="number">4</button>
+                <button id="5" class="number">5</button>
+                <button id="6" class="number">6</button>           
+                <button id="-" class="operator">&minus;</button>
+                
+                <button id="1" class="number">1</button>
+                <button id="2" class="number">2</button>
+                <button id="3" class="number">3</button>
+                <button id="+" class="operator">&plus;</button>
+                
+                <button id="empty" class="number"></button>
+                <button id="0" class="number">0</button>
+                <button id="empty" class="number"></button>
+                <button id="=" class="operator">=</button>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    
+    <script type="text/javascript">
+        
+        /**  get history of thecalculator*****/
+        
+        function getHistory(){
+             
+            return document.getElementById('history-val').innerHTML;
+        }
+        
+         /****** printing the history  *****/
+      
+        function printHistory(num){
+             
+            return document.getElementById('history-val').innerHTML=num ;
+        }
+            
+         /***** get the output value  *****/
+        
+        function getOutput(){
+             
+            return document.getElementById('output-val').innerHTML;
+        }
+      
+         /******  print the output value  *****/
+        
+        function printOutput(num){
+            
+            if(num == ""){ 
+                
+                 document.getElementById('output-val').innerHTML=num;
+                
+            }else{ 
+                
+                document.getElementById('output-val').innerHTML = getFormattedNumber(num);
+
+            }
+             
+        }
+         
+         /*****    *****/ 
+        
+        function getFormattedNumber(num){
+            
+            var n = Number(num);
+            var value = n.toLocaleString("en");
+            return value;
+             
+            return document.getElementById('history-val').innerHTML;
+        }
+        
+         /*****   *****/
+        
+        function reverseNumberFormat(num){
+            return Number(num.replace(/,/g,''));
+        }
+        
+         /***** defining the operator logic *****/
+        
+        var operator =document.getElementsByClassName("operator"); //get operator
+        
+        for (var i =0; i < operator.length; i++){
+            
+            operator[i].addEventListener('click', function(){
+                
+                if(this.id == "clear"){
+                    
+                    printHistory("");
+                    printOutput("");
+                    
+                }else if(this.id == "backspace"){
+                    
+                    var output = reverseNumberFormat(getOutput()).toString();
+                    
+                    
+                    if(output){//if output has a value
+
+                        output = output.substr( 0, output.length-1);
+                        printOutput(output);
+                    }
+                    
+                }else{
+
+                    var output = getOutput();
+                    var history = getHistory();
+                    
+                    if(output == "" && history != ""){
+                        
+                        if(isNaN(history[history.length-1])){
+                            
+                            history = history.substr(0, history.length-1);
+                        }
+                    }
+                    
+                    if(output != "" || history != ""){
+                        
+                        output = output == "" ? output : reverseNumberFormat(output);
+                        history = history + output;
+
+                        if(this.id == "=" ){
+
+                            var result = eval(history);
+                            
+                            printOutput(result);
+                            printHistory(history);
+
+                        }else{
+
+                            history = history + this.id;
+                            printHistory(history);
+                            printOutput("");
+                        }
+                    }
+
+                }
+
+            });                                        
+                                         
+        }
+        
+         /***** defining the logic for numbers *****/
+        
+        var number = document.getElementsByClassName("number");
+        
+        for(var i = 0; i < number.length; i++){
+            
+            number[i].addEventListener('click',function(){
+                
+                var output=reverseNumberFormat(getOutput());
+                
+                if(output!=NaN){ //if output is a number
+                    output = output + this.id;
+                    printOutput(output);
+                }
+            });
+        }
+
+        if (document.getElementsByName('result').overflow){
+            alert("overflow");
+            document.getElementsByClassName('result').style.fontSize="10px";
+        }
+    
+    </script>
+ 
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
