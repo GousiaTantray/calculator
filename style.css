@@ -1,56 +1,60 @@
-body{
-    font-size: "open sans" sans-serif;
-    background-color: black;;
+body {
+    font-size: "open sans"sans-serif;
+    background-color: black;
+    ;
 }
 
-.container{
+.container {
     width: 90%;
-    height:560px;
-    background:linear-gradient(135deg ,aqua, green);
-    margin:30px auto;
+    height: 560px;
+    background: linear-gradient(135deg, aqua, green);
+    background: linear-gradient( 135deg ,  #71b7e6, #9b59b6);
+    
+    margin: 30px auto;
 }
 
-.calculator{
-   // max-width: 320px;
-    width:320px;
-    height:90%;
+.calculator {
+         
+    width: 320px;
+    height: 90%;
     background-color: aliceblue;
     margin: 0 auto;
     position: relative;
     top: 20px;
     border-radius: 5px;
-    box-shadow: 10px 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0,0,0.19);
-    
+    box-shadow: 10px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
-.result{
+.result {
     height: 20%;
-    overflow:hidden;
+    overflow: hidden;
 }
 
-.keyboard{
+.keyboard {
     height: 80%;
     border-top: 2px solid aqua;
-    margin-top:5px;
+    margin-top: 5px;
 }
 
-#history{
-    text-align:right;
+#history {
+    text-align: right;
     height: 20px;
     margin: 0 22px;
     padding-top: 20px;
     font-size: 25px;
-    color:cadetblue;
+    color: cadetblue;
 }
 
-#output{
+#output {
     text-align: right;
-    height:50px;
+    height: 50px;
     margin: 10px 20px;
     font-size: 30px;
 }
 
-.operator, .number{
+.operator,
+.number {
     width: 50px;
     height: 50px;
     margin: 15px;
@@ -61,47 +65,47 @@ body{
     font-weight: 400;
     transition: all .3s ease-in;
 }
-.number, .empty{
+
+.number,
+.empty {
     background: transparent;
 }
-.operator{
+
+.operator {
     font-weight: 500;
 }
-.number, .operator{
+
+.number,
+.operator {
     cursor: pointer;
 }
 
-.number:active, .operator:active{
+.number:active,
+.operator:active {
     transform: scale(1.5);
-    //font-size:30px;
 }
 
-button:nth-child(4){
+button:nth-child(4) {
     font-size: 20px;
     background-color: #20b2aa;
 }
 
-button:nth-child(8){
+button:nth-child(8) {
     font-size: 20px;
     background-color: #ffa500;
 }
 
-button:nth-child(12){
+button:nth-child(12) {
     font-size: 20px;
     background-color: #f08080;
 }
 
-button:nth-child(16){
+button:nth-child(16) {
     font-size: 20px;
     background-color: #7d93e0;
 }
 
-button:nth-child(20){
+button:nth-child(20) {
     font-size: 20px;
     background-color: #9477af;
 }
-
-
-
-
- 
